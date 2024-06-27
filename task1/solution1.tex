@@ -1,0 +1,104 @@
+\input{preamble}
+
+\begin{document}
+    \section*{Домашнее задание №1, Марченко М.}
+
+    \begin{problem}[1]
+        Докажите, что:
+        \begin{enumerate}[label=(\alph{*})]
+            \item \(A \cup A = A\), \(A \cup B = B \cup A\), \(A \cup (B \cup C) = (A \cup B) \cup C\), \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\) и что эти свойства остаются справедливыми при замене объединения на пересечение и наоборот;
+            \item операция \(\triangle\) коммутативна и ассоциативна, операция \(\cap\) дистрибутивна относительно \(\triangle\), \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\), \(A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)\), \(A \setminus (A \setminus B) = A \cap B\) и \(A \setminus B = A \ (A \cap B)\).
+        \end{enumerate}
+    \end{problem}
+    \begin{proof}[Решение]
+        \begin{enumerate}[label=(\alph{*})]
+            \item \begin{itemize}
+                \item Пусть \(x \in A \cup A\), тогда по определению объединения \(x \in A\). Пусть теперь \(x \in A\), тогда по определению объединения \(x \in A \cup A\);
+                \item Пусть \(x \in A \cup B\), тогда \(x \in A\) или \(x \in B\), а, следовательно \(x \in B \cup A\). Аналогично в обратную сторону;
+                \item Пусть \(x \in A \cup (B \cup C)\), тогда \(x \in A\) или \(x \in (B \cup C)\). Если \(x \in (B \cup C)\), то \(x \in B\) или \(x \in C\). Если \(x \in A\) или \(x \in B\), то \(x \in A \cup B\), а следовательно \(x \in (A \cup B) \cup C\); если же \(x \in C\), то \(x \in (A \cup B) \cup C\). Аналогично в обратную сторону.
+                \item Пусть \(x \in A \cap (B \cup C)\), тогда \(x \in A\) и \(x \in B \cup C\). То есть \(x \in A\) и \(x \in B\) или \(x \in A\) и \(x \in C\), откуда \(x \in (A \cap B) \cup (A \cap C)\). Доказательство обратного включение получается прочтением этих рассуждений с конца.
+                \item Рассмотрим эти свойства для дополнений исходных множеств и <<навесим>> отрицание на обе стороны формул, которыми задаются множества. Пользуясь законами де Моргана, получим те же свойства с заменой \(\cup\) на \(\cap\) и наоборот.
+            \end{itemize}
+            \item \begin{itemize}
+                \item TODO
+                \item TODO
+                \item Пусть \(x \in A \setminus (B \cup C)\), тогда \(x \in A\), \(x \not \in B\) и \(x \not \in C\). Следовательно, \(x \in A \setminus B\) и \(x \in A \setminus C\), то есть \(x \in (A \setminus B) \cap (A \setminus C)\). Доказательство обратного включения получается прочтением рассуждений в обратном порядке.
+                \item Пусть \(x \in A \setminus (B \cap C)\), тогда \(x \in A\) и \(x \not \in B\) или \(x \in A\) и \(x \not \in C\), откуда \(x \in (A \setminus B) \cup (A \setminus C)\). Доказательство обратного включения получается прочтением рассуждений наоборот.
+                \item Пусть \(x \in A \setminus (A \setminus B)\), тогда \(x \in A\) и \(x \not \in A \setminus B\), то есть \(x \in A\) и \(x \not \in A\) или \(x \in A\) и \(x \in B\). Следовательно, \(x \in A \cap B\). Доказательство обратного включения\ldots
+                \item Очевидно, что требования \(x \in A\) и \(x \not \in B\) и требования \(x \in A\) и \(x \not \in A\) или \(x \in A\) и \(x \not \in B\) определяют одно и то же множество.
+            \end{itemize}
+        \end{enumerate}
+    \end{proof}
+
+    \begin{problem}[2]
+        Докажите, что:
+        \begin{enumerate}[label=(\alph{*})]
+            \item множество \((x, y) = \{\{x\}, \{x, y\}\}\) обладает свойством упорядоченной пары, т. е. \((x, y) = (x_1, y_1)\) в точности тогда, когда \(x = x_1\) и \(y = y_1\).
+            \item операция композиции бинарных отношений на данном множестве ассоциативна, но не коммутативна. Задаёт ли эта операция группу на этом множестве? Ответ обоснуйте.
+        \end{enumerate}
+    \end{problem}
+    \begin{proof}[Решение]
+        \begin{enumerate}[label=(\alph{*})]
+            \item Достаточность очевидна, докажем необходимость. Имеем \[
+                \{\{x\}, \{x, y\}\} = \{\{x_1\}, \{x_1, y_1\}\},
+            \]
+            пусть при этом \(x \neq y\). Тогда множество \(\{x, y\}\) двухэлементное и \(\{x, y\} = \{x_1, y_1\}\), так как двухэлементное множество не может равняться одноэлементному. Следовательно, \(\{x\} = \{x_1\}\). Отсюда \(x = x_1\) и \(y = y_1\). Аналогично если \(x_1 = y_1\).
+
+            Пусть теперь \(x = y\) и \(x_1 = y_1\), тогда \(\{\{x\}, \{x, y\}\} = \{\{x\}\}\) и \(\{\{x_1\}, \{x_1, y_1\}\} = \{\{x_1\}\}\). Отсюда \(x = y = x_1 = y_1\).
+            \item TODO
+        \end{enumerate}
+    \end{proof}
+
+    \begin{problem}[3]
+        Перечислите все упорядоченные пары множеств из списка \(\bN, \bZ, \bQ, \bR, \bC\), для которых существует инъекция первого множества во второе. Ответ обоснуйте.
+    \end{problem}
+    \begin{proof}[Решение]
+        Так как множества \(\bN, \bZ, \bQ\) счётные, между ними существует биекция, откуда получаем шесть пар: \[
+            (\bN, \bZ), (\bN, \bQ), (\bZ, \bQ), (\bQ, \bZ), (\bQ, \bN), (\bZ, \bN).    
+        \]
+        Также существует инъекция \(\bN\) в \(\bR, \bC\) --- вложение. Аналогично существует вложение \(\bZ\) в \(\bR, \bC\), вложение \(\bQ\) в \(\bR, \bC\) и вложение \(\bR\) в \(\bC\). Таким способом можно получить ещё семь пар: \[
+            (\bN, \bR), (\bN, \bC), (\bZ, \bR), (\bZ, \bC), (\bQ, \bR), (\bQ, \bC), (\bR, \bC).
+        \]
+        Последняя пара \((\bC, \bR)\) получается из соображения, что \(\bR\) равномощно \(\bR^2\), которое равномощно~\(\bC\). Других пар не получится в силу континуальности \(\bR, \bC\) и счётности \(\bN, \bZ, \bQ\).
+    \end{proof}
+
+    \begin{problem}[4]
+        Существует ли биекция между следующими множествами: \(X \times Y\) и \(Y \times X\), \((X \times Y) \times Z\) и \(X \times (Y \times Z)\), \(X^Y = \{f \mid f \colon Y \to X\}\) и \(Y^X\), \((X^Y)^Z\) и \(X^{Y \times Z}\), \((X^Y)^Z\) и \(X^{Y^Z}\), \((X \times Y)^Z\) и \(X^Z \times Y^Z\), \(\power(X)\) и  \(\{0, 1\}^X\)? Ответ обоснуйте. 
+    \end{problem}
+    \begin{proof}[Решение]
+        \begin{itemize}
+            \item Да, \((x, y) \mapsto (y, x)\) для любых \(x \in X\) и \(y \in Y\);
+            \item Да, \(((x, y), z) \mapsto (x, (y, z))\) для любых \(x \in X\), \(y \in Y\) и \(z \in Z\);
+            \item Пусть \(|X| = n\), \(|Y| = m\), тогда \(|X^Y| = n^m\), \(|Y^X| = m^n\). Так как в общем случае \(n^m \neq m^n\), биекции не существует. Пусть теперь \(X\) и \(Y\) --- счётные множества. Тогда \(X^Y\) и \(Y^X\) континуальны, а соответственно, между ними существует биекция. Аналогично с другими кардинальными числами.
+            \item TODO
+        \end{itemize}
+    \end{proof}
+
+    \begin{problem}[5]
+        \begin{enumerate}[label=(\alph{*})]
+            \item Пусть \(x' = x \cup \{x\}\) и \(\power(x) = \{y \mid y \subseteq x\}\). Найдите \(\emptyset^{''''}\) и \(\power^4(\emptyset)\). Сколько элементов в множестве \(\power^{12}(\emptyset)\)?
+            \item Множество \(X\) называется индуктивным, если \(\emptyset \in X\) и \(x \in X \to x' \in X\). Может ли индуктивное множество быть конечным? Докажите, что существует наименьшее по включению индуктивное множество.
+        \end{enumerate}
+    \end{problem}
+    \begin{proof}[Решение]
+        \begin{enumerate}[label=(\alph{*})]
+            \item Пошагово:
+            \begin{align*}
+                \emptyset' = \emptyset \cup \{\emptyset\} &= \{\emptyset\} \\
+                \emptyset'' = \{\emptyset\} \cup \{\{\emptyset\}\} &= \{\emptyset, \{\emptyset\}\} \\
+                \emptyset''' = \{\emptyset, \{\emptyset\}\} \cup \{\{\emptyset, \{\emptyset\}\}\} &= \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\} \\
+                \emptyset'''' = \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\} \cup \{\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}\} &= \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}\}
+            \end{align*}
+            Также пошагово:
+            \begin{align*}
+                \power(\emptyset) &= \{\emptyset\} \\
+                \power^2 (\emptyset) &= \{\emptyset, \{\emptyset\}\} \\
+                \power^3 (\emptyset) &= \{\emptyset, \{\emptyset\}, \{\{\emptyset\}\}, \{\emptyset, \{\emptyset\}\}\} \\
+                \power^4 (\emptyset) &= TODO
+            \end{align*}
+            \item Пусть индуктивное множество \(X\) состоит из \(n\) элементов. Пусть \(x \in X\), тогда по определению \(x' \in X\), а следовательно \(x'' \in X, x''' \in X, \ldots, x^{(n-1)} \in X\). Так как \(x^{(n)} \in X\), а в множестве \(X\) всего \(n\) элементов, то \(x^{(n)} = x^{(l)}\) для некоторого \(l\). Противоречие. Значит, индуктивное множество бесконечно.
+            
+            Пусть \(\mathcal{X} = \{\emptyset, \emptyset', \emptyset'', \ldots\}\). Рассмотрим произвольное индуктивное множество \(X\) и покажем, что \(\mathcal{X} \subseteq X\). Действительно, \(\emptyset \in X\) по определению, а поэтому \(\emptyset^{(n)}\) для любого \(n\).
+        \end{enumerate}
+    \end{proof}
+\end{document}
