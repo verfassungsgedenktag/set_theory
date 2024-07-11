@@ -1,0 +1,141 @@
+\input{preamble}
+
+\begin{document}
+    \section*{Домашнее задание №2, Марченко М.}
+
+    \begin{problem}[1]
+        Проверьте, что:
+        \begin{itemize}
+            \item обращение любого частичного порядка на множестве \(X\) является частичным порядком на~\(X\);
+            \item декартово прозведение \((x, y) T (x_1, y_1) \leftrightarrow x R x_1 \land y S y_1\), \(T = R \times S\), частичных порядков \(R\)~на~\(X\) и \(S\)~на~\(Y\) является частичным порядком на \(X \times Y\);
+            \item объединение произвольной возрастающей по включению последовательности частичных порядков на \(X\) является частичным порядком на \(X\);
+            \item пересечение частичных порядков на \(X\) является частичным порядком на \(X\).
+        \end{itemize}
+    \end{problem}
+    \begin{proof}[Решение]
+        Для каждого случая будем проверять выполнение условий рефлексивности, транзитивности и антисимметричности:
+        \begin{itemize}
+            \item \begin{enumerate}[label=\arabic{*})]
+                \item имеем \(\forall x \in X \enskip x R x \), из чего по определению обращения следует \(\forall x \in X \enskip x R^{-1} x\),
+                \item для любых \(x, y, z \in X \) \[
+                    x R^{-1} y \land y R^{-1} z \leftrightarrow y R x \land z R y \to z R x \leftrightarrow x R^{-1} z
+                \]
+                \item \(\forall x, y \in X x R^{-1} y \land y R^{-1} x \leftrightarrow y R x \land x R y \to x = y\);
+            \end{enumerate}
+            \item \begin{enumerate}[label=\arabic{*})]
+                \item имеем \(\forall x \in X, y \in Y \enskip x R x \land y S y\), откуда по определению \(\forall x \in X, y \in Y \enskip (x, y) T (x, y)\),
+                \item для любых \(x, x_1, x_2 \in X, y, y_1, y_2 \in Y \)
+                \begin{multline*}
+                    (x, y) T (x_1, y_1) \land (x_1, y_1) T (x_2, y_2) \leftrightarrow \\
+                    \leftrightarrow x R x_1 \land y S y_1 \land x_1 R x_2 \land y_1 S y_2 \to x R x_2 \land y S y_2 \to (x, y) T (x_2, y_2)
+                \end{multline*}
+                \item для любых \(x, x_1 \in X, y, y_1 \in Y \)
+                \begin{multline*}
+                    (x, y) T (x_1, y_1) \land (x_1, y_1) T (x, y) \leftrightarrow \\
+                    \leftrightarrow x R x_1 \land y S y_1 \land x_1 R x \land y_1 S y \leftrightarrow x = x_1 \land y = y_1 \leftrightarrow (x, y) = (x_1, y_1)
+                \end{multline*}
+            \end{enumerate}
+            \item Пусть \(R = \bigcup_{i=1}^{\infty} R_i\), где \(R_i\) --- частичный порядок на \(X\), причём \(R_i \subseteq R_{i+1}\), тогда:
+            \begin{enumerate}[label=\arabic{*})]
+                \item для любого \(i\) имеем \(\forall x \in X \enskip x R_i x\), откуда \(\forall x \in X \enskip x R x\),
+                \item для любых \(x, y, z \in X\) \[
+                    x R y \land y R z \to \exists i, j: x R_i y \land y R_j z,
+                \]
+                а так как порядки возрастают по включению, то при \(k = \max(i, j)\) выполняется \[
+                    x R_k y \land y R_k z \to x R_k z \to x R z,
+                \]
+                \item для любых \(x, y \in X\) \[
+                    x R y \land y R x \to \exists i, j: x R_i y \land y R_j x,
+                \]
+                а так как порядки возрастают по включению, то при \(k = \max(i, j)\) выполняется \[
+                    x R_k y \land y R_k x \to x = y;
+                \]
+            \end{enumerate}
+            \item Пусть \(R = \bigcap_{i=1}^{\infty} R_i\), где \(R_i\) --- частичный порядок на \(X\), тогда:
+            \begin{enumerate}[label=\arabic{*})]
+                \item для любого \(i\) \(\forall x \in X \enskip x R_i x \), откуда следует, что \(\forall x \in X \enskip x R x \),
+                \item для любых \(x, y, z \in X\) \[
+                    x R y \land y R z \leftrightarrow \forall i \enskip x R_i y \land y R_i z \to x R_i z \to x R z,
+                \]
+                \item для любых \(x, y \in X\) \[
+                    x R y \land y R x \leftrightarrow \forall i \enskip x R_i y \land y R_i x \leftrightarrow x = y.
+                \]
+            \end{enumerate}
+        \end{itemize}
+    \end{proof}
+
+    \begin{problem}[2]
+        \begin{enumerate}[label=(\alph{*})]
+            \item Пусть \(P(X)\) --- множество всех частичных порядков на \(X\). Докажите, что максимальные элементы в \((P(X); \subseteq)\) --- это в точности линейные порядки на \(X\). Существует ли наименьший элемент в \((P(X); \subseteq)\)?
+            \item Является ли декартово произведение двух предпорядков (соотв. линейных порядков) снова предпорядком (соотв. линейным порядком)?
+        \end{enumerate}
+    \end{problem}
+    \begin{proof}[Решение]
+        \begin{enumerate}[label=(\alph{*})]
+            \item \begin{enumerate}
+                \item[\(\Rightarrow\)] Пусть \(R\) --- максимальный элемент в \((P(X); \subseteq)\), то есть не существует \(S \neq R\) такого, что \(R \subseteq S\). Пусть при этом \(R\) не является некоторым линейным порядком на \(X\), то есть существуют \(x, y\) такие, что \(\lnot(xRy \lor yRx)\). Положим \(S = R \cup {(x, y)}\), но тогда \(R \subseteq S\). Противоречие.
+                \item[\(\Leftarrow\)] Пусть \(R\) --- линейный порядок на \(X\), и пусть он при этом не максимальный элемент в \((P(X); \subseteq)\), то есть существует \(S \neq R\) такой, что \(R \subseteq S\). Рассмотрим \(x, y\) такие, что \(x S y \land \lnot(x R y)\). Так как \(R\) --- линейный порядок, то тогда \(y R x\), а так как \(R \subseteq S\), то и \(y S x\). Получаем, что \(x S y \land y S x\), откуда \(x = y\). Но для любого \(x\) \(x R x\), а мы вначале предположили обратное. Противоречие.
+            \end{enumerate}
+            \item TODO
+        \end{enumerate}
+    \end{proof}
+
+    \begin{problem}[3]
+        Докажите, что существует биекция между:
+        \begin{enumerate}[label=(\alph{*})]
+            \item множеством всех частичных порядков на \(X\) и множеством всех строгих частичных порядков на \(X\). Аналогично для линейных порядков.
+            \item множеством всех эквивалентностей на \(X\) и множеством всех разбиений множества \(X\).
+        \end{enumerate}
+    \end{problem}
+    \begin{proof}[Решение]
+        \begin{enumerate}[label=(\alph{*})]
+            \item Сопоставим каждому частичному порядку порядку \(R\) строгий частичный порядок \(S\), из которого <<выкинули>> все пары вида \((x, x)\). Сюръективность очевидна (просто добавим обратно все такие пары и получим тем самым прообраз), инъективность следует из того, что в каждый частичный порядок входят все пары вида \((x, x)\), а значит, мы всегда выкидываем один и тот же набор пар.
+
+            Утверждение про линейные порядки следует из того, что построенная описанным выше способом биекция переводит линейный порядок снова в линейный.
+            \item Поставим в соответствие каждой эквивалентности разбиение множества \(X\) на соответствующие классы. Сюръективность следует из того, что для любого разбиения существует отношение эквивалентности <<находиться в одном подмножестве данного разбиения>>, для которого подмножества разбиения --- классы эквивалентности. Инъективность очевидна, так как отношения эквивалентности, как и любые другие отношения, полностью определяются упорядоченными парами, которые в них входят.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{problem}[4]
+        \begin{enumerate}[label=(\alph{*})]
+            \item Линейный порядок на \(X\) называется полным, если любое непустое ограниченное сверху подмножество \(X\) имеет супремум. Являются ли полными обычные линейные порядки на множествах всех натуральных, целых, рациональных и вещественных чисел? Ответ обоснуйте.
+            \item Проверьте, что любое подмножество множества \(\power(X)\) имеет инфимум и супремум по отношению включения.
+        \end{enumerate}
+    \end{problem}
+    \begin{proof}[Решение]
+        TODO
+    \end{proof}
+
+    \begin{problem}[5]
+        \begin{enumerate}[label=(\alph{*})]
+            \item Опишите фактор-множества для следующих эквивалентностей:
+            \begin{itemize}
+                \item <<\(x - y\) делится на \(5\)>> на \(\bZ\),
+                \item <<\(x - y \in \bZ\)>> на \(\bR\),
+                \item отношение параллельности прямых на множестве всех прямых на плоскости.
+            \end{itemize}
+            \item Проверьте, что:
+            \begin{itemize}
+                \item если \(\leqslant\) --- предпорядок на \(X\), то отношение <<\(x \leqslant y \land y \leqslant x\)>> есть эквивалентность на \(X\),
+                \item если \(f \colon X \to Y \), то отношение <<\(f(x) = f(x_1)\)>> есть эквивалентность на \(X\).
+            \end{itemize}
+        \end{enumerate}
+    \end{problem}
+    \begin{proof}[Решение]
+        \begin{enumerate}[label=(\alph{*})]
+            \item \begin{itemize}
+                \item Множества вида \(\{5k\}, \{1 + 5k\}, \{2 + 5k\}, \{3 + 5k\}, \{4 + 5k\}\), где \(k \in \bZ\). Легко видеть, что любое целое число входит в одно из этих множеств и что эти множества не пересекаются.
+                \item Множества вида \(\{x + k\}\), где \(x \in [0, 1)\) фиксировано, а \(k \in \bZ\).
+                \item Множества вида \(\{ax + b\}\), где \(a \in \bR\) фиксировано, а \(b \in \bR\).
+            \end{itemize}
+            \item Проверим выполнение условий рефлексивности, симметричности и транзитивности:
+            \begin{itemize}
+                \item \begin{enumerate}[label=\arabic{*})]
+                    \item очевидно в силу того, что \(\leqslant\) --- предпорядок,
+                    \item в силу коммутативности конъюнкции <<\(x \leqslant y \land y \leqslant x\)>> \(\leftrightarrow\) <<\(y \leqslant x \land x \leqslant y\)>>,
+                    \item <<\(x \leqslant y \land y \leqslant x\)>> \(\land\) <<\(y \leqslant z \land z \leqslant y\)>> \(\leftrightarrow\) \(x \leqslant y \land y \leqslant x \land y \leqslant z \land z \leqslant y\) \(\to\) <<\(x \leqslant z \land z \leqslant x\)>>.
+                \end{enumerate}
+            \end{itemize}
+        \end{enumerate}
+    \end{proof}
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass[12pt, a4paper]{article}
+
+% кодировка и языки
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+% ams
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% окружения
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+
+\newtheoremstyle{task}%
+    {}{}%
+    {\slshape}{}%
+    {\bfseries}{.}%
+    { }{\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}
+
+\theoremstyle{task}
+\newtheorem*{problem}{Задача}
+
+% остальное
+\frenchspacing
+\binoppenalty=100000
+\relpenalty=100000
+\oddsidemargin=-0.5in
+\textwidth=7.3in
+\topmargin=-0.5in
+\textheight=9.7in
+
+% операторы
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\expected}{\mathbb{E}}
+\DeclareMathOperator{\prob}{\mathbb{P}}
+\DeclareMathOperator{\predicate}{P}
+\DeclareMathOperator{\power}{\mathcal{P}}
+
+\usepackage[bb=boondox]{mathalfa}
+\usepackage{eucal}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{centernot}
+\usepackage{algpseudocodex}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bG}{\mathbb{G}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\renewcommand{\emptyset}{\varnothing}
